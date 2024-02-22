@@ -9,7 +9,7 @@ import {
 
 const Sidebar = () => {
   return (
-    <div className="min-h-screen sticky top-0 border-2 border-secondary/20">
+    <div className="h-screen sticky top-0 border-r-2 border-secondary/20">
       <div className="flex flex-col items-center gap-5 h-full py-5">
         <img src={logo} alt="logo" />
         <NavLink
@@ -39,7 +39,7 @@ const Sidebar = () => {
         <NavLink
           to="/profile"
           className={({ isActive }) =>
-            isActive ? "active-nav" : "non-active-nav group"
+            isActive ? "active-nav mt-auto" : "non-active-nav group mt-auto"
           }
         >
           <UserCircleIcon className="h-7 w-7 group-hover:text-white " />
