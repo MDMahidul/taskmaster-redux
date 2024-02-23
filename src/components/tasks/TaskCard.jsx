@@ -1,18 +1,21 @@
 import { ArrowRightIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useDispatch } from "react-redux";
-import { updateStatus,removeTask } from "../../redux/features/tasks/tasksSlice";
+import {
+  updateStatus,
+  removeTask,
+} from "../../redux/features/tasks/tasksSlice";
 
 const TaskCard = ({ task }) => {
   const dispatch = useDispatch();
 
   let updatedStatus;
 
-  if(task.status == 'pending'){
-    updatedStatus='running';
-  }else if(task.status == 'running'){
-    updatedStatus='done';
-  }else{
-    updatedStatus='archive';
+  if (task.status == "pending") {
+    updatedStatus = "running";
+  } else if (task.status == "running") {
+    updatedStatus = "done";
+  } else {
+    updatedStatus = "archive";
   }
 
   return (
