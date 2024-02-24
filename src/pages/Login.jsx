@@ -1,18 +1,40 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import loginImage from "../assets/image/login.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { createUser, userLogin } from "../redux/features/user/userSlice";
+import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const Login = () => {
-    const {register,handleSubmit}=useForm();
-    const navigate=useNavigate();
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isLoading, isError, error, email } = useSelector(
+    (state) => state.userSlice
+  );
 
-    const onSubmit=({email,password})=>{
-        console.log(email,password);
+  const onSubmit = ({ email, password }) => {
+    dispatch(userLogin({ email, password, isGoogle:false }));
+    //toast.success("Successfully Login!!!");
+    //navigate("/");
+  };
+  useEffect(() => {
+    if (isError && error) {
+      toast.error(error);
     }
+  }, [isError, error]);
 
-    const handleGoogleLogin=()=>{
-        
+  useEffect(() => {
+    if (!isLoading && email) {
+      toast.success("Login Successfully!!!");
+      navigate("/");
     }
+  }, [isLoading, email]);
+
+  const handleGoogleLogin = () => {
+    dispatch(createUser({isGoogle:true}));
+  };
   return (
     <div className="flex max-w-7xl h-screen items-center mx-auto">
       <div className="w-1/2">
