@@ -7,6 +7,7 @@ import Profile from "../pages/Profile";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import PrivateRoute from "./PrivateRoute";
+import Archive from "../pages/Archive";
 
 const routes = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const routes = createBrowserRouter([
       {
         index: true,
         element: <Tasks />,
+      },
+      {
+        path: "/archive",
+        element: <Archive />,
       },
       {
         path: "/chat",
