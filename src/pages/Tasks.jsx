@@ -19,8 +19,8 @@ const Tasks = () => {
   const doneTasks = tasks?.filter((item) => item.status == "done");
 
   return (
-    <div className="h-screen grid grid-cols-12">
-      <div className="col-span-9 px-10 pt-10">
+    <div className="h-screen grid grid-cols-12 ">
+      <div className="col-span-9 px-10 pt-10 pb-10">
         <div className="flex justify-between items-center">
           <div>
             <h1 className="font-semibold text-3xl">Tasks</h1>
