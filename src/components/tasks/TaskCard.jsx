@@ -4,11 +4,12 @@ import {
   updateStatus,
   removeTask,
 } from "../../redux/features/tasks/tasksSlice";
-import { useUpdateTaskMutation } from "../../redux/features/api/baseApi";
+import { useUpdateTaskMutation,useDeleteTaskMutation } from "../../redux/features/tasks/taskApi";
 
 const TaskCard = ({ task }) => {
   // const dispatch = useDispatch();
   const [updateTask, { data, error }] = useUpdateTaskMutation();
+  const [deleteTask] = useDeleteTaskMutation();
 
   const handleUpdate = (id, updatedStatus) => {
     const data = {
@@ -47,7 +48,7 @@ const TaskCard = ({ task }) => {
       <div className="flex justify-between mt-3">
         <p>{task?.date}</p>
         <div className="flex gap-3">
-          <button onClick={() => console.log("remove")} title="Delete">
+          <button onClick={() => deleteTask(task?._id)} title="Delete">
             <TrashIcon className="h-5 w-5 text-red-500" />
           </button>
           <button
